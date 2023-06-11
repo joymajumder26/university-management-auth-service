@@ -5,7 +5,7 @@ import { generateUserId } from './users.untills'
 
 const createUser = async (user: IUser): Promise<IUser | null> => {
   // auto generated incremental id
-  console.log('user', user)
+  // console.log('user', user)
   const id = await generateUserId()
   user.id = id
   // default password
@@ -14,7 +14,7 @@ const createUser = async (user: IUser): Promise<IUser | null> => {
   }
 
   const createdUser = await User.create(user)
-  console.log('createdUser', createdUser)
+  // console.log('createdUser', createdUser)
 
   if (!createUser) {
     throw new Error('Failed to create user!')
