@@ -9,6 +9,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+console.log(app.get('env'))
 //application routes
 app.use('/api/v1/users/', usersRouter)
 
