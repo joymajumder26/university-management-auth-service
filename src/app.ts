@@ -3,7 +3,7 @@ import express, { Application } from 'express'
 
 import cors from 'cors'
 import globalErrorHandler from './app/middlewares/globalErrorHandler'
-import { UserRoutes } from './app/modules/user.route'
+import { UserRoutes } from './app/modules/user/user.route'
 
 const app: Application = express()
 
@@ -16,7 +16,7 @@ console.log(app.get('env'))
 //application routes
 app.use('/api/v1/users/', UserRoutes)
 
-//testing
+// //testing
 // app.get('/', async(req: Request, res: Response, next: NextFunction) => {
 
 // throw new Error("Testing error logger")

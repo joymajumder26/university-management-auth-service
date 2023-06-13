@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
 import config from './config/index'
 import app from './app'
-import { errorLogger, logger } from './shared/logger'
+import { errorlogger, logger } from './shared/logger'
 import { Server } from 'http'
 
 process.on('uncaughtException', error => {
-  errorLogger.error(error)
+  errorlogger.error(error)
   process.exit(1)
 })
 
@@ -19,13 +19,13 @@ async function main() {
       logger.info(`application  listening on port ${config.port}`)
     })
   } catch (err) {
-    errorLogger.error(`Failed to connect database`, err)
+    errorlogger.error(`Failed to connect database`, err)
   }
 
   process.on('unhandledRejection', error => {
     if (server) {
       server.close(() => {
-        errorLogger.error(error)
+        errorlogger.error(error)
         process.exit(1)
       })
     } else {
