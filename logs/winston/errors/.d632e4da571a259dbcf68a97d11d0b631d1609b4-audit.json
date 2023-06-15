@@ -89,6 +89,31 @@
             "date": 1686738275697,
             "name": "E:\\JavaScript\\university-management-auth-service\\logs\\winston\\errors\\phu-2023-14-06-16-error.log",
             "hash": "9df07c353f63ba2d1de23fcc8f0980982cfe2d4fc93ed848c6970355b857d2d2"
+        },
+        {
+            "date": 1686740796671,
+            "name": "E:\\JavaScript\\university-management-auth-service\\logs\\winston\\errors\\phu-2023-14-06-17-error.log",
+            "hash": "4dab32b6e0185910890ceb2d4120b000cc5cd2efb23eebf3eac0c82c6ad3a3f3"
+        },
+        {
+            "date": 1686749172820,
+            "name": "E:\\JavaScript\\university-management-auth-service\\logs\\winston\\errors\\phu-2023-14-06-19-error.log",
+            "hash": "3465c13cb621bee042443dff199351ba9e111c9391ba997b42dd5bcf4ccf914b"
+        },
+        {
+            "date": 1686812324392,
+            "name": "E:\\JavaScript\\university-management-auth-service\\logs\\winston\\errors\\phu-2023-15-06-12-error.log",
+            "hash": "62a6ff0563b78da4b3824205a35a22b6d229fa2677d860dcc400dcdc435408b0"
+        },
+        {
+            "date": 1686812431596,
+            "name": "E:\\JavaScript\\university-management-auth-service\\logs\\winston\\errors\\phu-2023-15-06-13-error.log",
+            "hash": "2ab29001e71a31c75acf92f63e1aeb1f321a47118f0ba151a21c4c8706c3a579"
+        },
+        {
+            "date": 1686816001177,
+            "name": "E:\\JavaScript\\university-management-auth-service\\logs\\winston\\errors\\phu-2023-15-06-14-error.log",
+            "hash": "0304d326b0db6df3acbc561582f2365886f026edb77deb56db9ccde3fedd6a4e"
         }
     ],
     "hashType": "sha256"

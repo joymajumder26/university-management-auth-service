@@ -1,30 +1,27 @@
-import { RequestHandler } from 'express'
-import { UserService } from './user.service'
+import { NextFunction, RequestHandler, Request, Response } from 'express';
+import { UserService } from './user.service';
+import catctAsync from '../../../shared/catchAsync';
+import sendResponse from '../../../shared/sendResponse';
+import httpStatus from 'http-status';
+import { IUser } from './user.interface';
 
 // import { z } from 'zod'
 
-const createUser: RequestHandler = async (req, res, next) => {
-  try {
-    //req-validation
-    //body -->object
-    //data -->object
+const createUser: RequestHandler = catctAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { user } = req.body;
+    const result = await UserService.createUser(user);
 
-    const { user } = req.body
-    const result = await UserService.createUser(user)
-    res.status(200).json({
-      success: true,
-      message: 'user created successfully!',
+    sendResponse<IUser>(res, {
+      statusCode: httpStatus.OK,
+      suceess: true,
+      message: 'User Created Successfully',
       data: result,
-    })
-  } catch (error) {
-    next(error)
-    // res.status(400).json({
-    //   sucess: false,
-    //   message: 'Failed to create user',
-    // })
+    });
+    next();
   }
-}
+);
 
 export const UserController = {
   createUser,
-}
+};
