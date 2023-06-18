@@ -35,8 +35,13 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
       enum: acdemicSemesterMonths,
     },
   },
+
   {
     timestamps: true,
+    toJSON: {
+      // id ta normally dekhanor jonno
+      virtuals: true,
+    },
   }
 );
 

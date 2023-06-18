@@ -9,6 +9,11 @@ const userSchema = new Schema<IUser>(
   },
   {
     timestamps: true,
+
+    toJSON: {
+      // id ta normally dekhanor jonno
+      virtuals: true,
+    },
   }
 );
 
