@@ -16,7 +16,7 @@ import { IFaculty } from '../faculty/faculty.interface';
 import { Faculty } from '../faculty/faculty.model';
 import { Admin } from '../admin/admin.model';
 import { IAdmin } from '../admin/admin.interface';
-
+// import bcrypt from 'bcrypt';
 const createStudent = async (
   student: IStudent,
   user: IUser
@@ -25,6 +25,7 @@ const createStudent = async (
   if (!user.password) {
     user.password = config.default_student_pass as string;
   }
+
   // set role
   user.role = 'student';
 
