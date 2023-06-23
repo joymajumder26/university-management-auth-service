@@ -18,7 +18,7 @@ const createSemester = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Academic Semester Created Successfully',
     data: result,
   });
@@ -35,7 +35,7 @@ const getAllSemesters = catctAsync(async (req: Request, res: Response) => {
   );
   sendResponse<IAcademicSemester[]>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Semesters retrieved successfully',
     meta: result.meta,
     data: result.data,
@@ -49,7 +49,7 @@ const getSingleSemester = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Semesters retrieved successfully',
 
     data: result,
@@ -64,7 +64,7 @@ const updateSemester = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Semesters updated successfully',
 
     data: result,
@@ -77,7 +77,7 @@ const deleteSemester = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Semesters deleted successfully',
 
     data: result,

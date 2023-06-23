@@ -6,6 +6,7 @@ import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import routes from './app/routes';
 
 import httpStatus from 'http-status';
+import { generateFacultyId } from './app/modules/user/user.untills';
 // import { UserRoutes } from './app/modules/user/user.route';
 // import { AcademicSemesterRoutes } from './app/modules/academicSemester/academicSemester.route';
 
@@ -47,5 +48,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   });
   next();
 });
+
+const testId = async () => {
+  const testId = generateFacultyId();
+  console.log(testId);
+};
+testId();
 
 export default app;

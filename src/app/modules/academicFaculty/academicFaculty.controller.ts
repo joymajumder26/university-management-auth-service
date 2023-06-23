@@ -20,7 +20,7 @@ const createFaculty = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Academic Faculty Created Successfully',
     data: result,
   });
@@ -37,7 +37,7 @@ const getAllFaculty = catctAsync(async (req: Request, res: Response) => {
   );
   sendResponse<IAcademicFaculty[]>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Faculty retrieved successfully',
     meta: result.meta,
     data: result.data,
@@ -51,7 +51,7 @@ const getSingleFaculty = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Faculty retrieved successfully',
 
     data: result,
@@ -66,7 +66,7 @@ const updateFaculty = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Faculty updated successfully',
 
     data: result,
@@ -79,7 +79,7 @@ const deleteFaculty = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Faculty deleted successfully',
 
     data: result,

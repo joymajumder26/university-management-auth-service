@@ -7,20 +7,48 @@ import { IUser } from './user.interface';
 
 // import { z } from 'zod'
 
-const createUser: RequestHandler = catctAsync(
+const createStudent: RequestHandler = catctAsync(
   async (req: Request, res: Response) => {
-    const { user } = req.body;
-    const result = await UserService.createUser(user);
+    const { student, ...userData } = req.body;
+    const result = await UserService.createStudent(student, userData);
 
     sendResponse<IUser>(res, {
       statusCode: httpStatus.OK,
-      suceess: true,
-      message: 'User Created Successfully',
+      success: true,
+      message: 'Student Created Successfully',
+      data: result,
+    });
+  }
+);
+const createFaculty: RequestHandler = catctAsync(
+  async (req: Request, res: Response) => {
+    const { faculty, ...userData } = req.body;
+    const result = await UserService.createFaculty(faculty, userData);
+
+    sendResponse<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'user created successfully!',
+      data: result,
+    });
+  }
+);
+const createAdmin: RequestHandler = catctAsync(
+  async (req: Request, res: Response) => {
+    const { admin, ...userData } = req.body;
+    const result = await UserService.createAdmin(admin, userData);
+
+    sendResponse<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Admin created successfully!',
       data: result,
     });
   }
 );
 
 export const UserController = {
-  createUser,
+  createStudent,
+  createFaculty,
+  createAdmin,
 };

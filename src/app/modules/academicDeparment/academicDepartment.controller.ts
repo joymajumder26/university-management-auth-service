@@ -20,7 +20,7 @@ const createDepartment = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicDepartment>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Academic Department Created Successfully',
     data: result,
   });
@@ -37,7 +37,7 @@ const getAllDepartment = catctAsync(async (req: Request, res: Response) => {
   );
   sendResponse<IAcademicDepartment[]>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Department retrieved successfully',
     meta: result.meta,
     data: result.data,
@@ -51,7 +51,7 @@ const getSingleDepartment = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicDepartment>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Department retrieved successfully',
 
     data: result,
@@ -69,7 +69,7 @@ const updateDepartment = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicDepartment>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Department updated successfully',
 
     data: result,
@@ -82,7 +82,7 @@ const deleteDepartment = catctAsync(async (req: Request, res: Response) => {
 
   sendResponse<IAcademicDepartment>(res, {
     statusCode: httpStatus.OK,
-    suceess: true,
+    success: true,
     message: 'Department deleted successfully',
 
     data: result,
