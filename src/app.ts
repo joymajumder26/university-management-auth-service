@@ -7,12 +7,15 @@ import routes from './app/routes';
 
 import httpStatus from 'http-status';
 import { generateFacultyId } from './app/modules/user/user.untills';
+
+import cookieParser from 'cookie-parser';
 // import { UserRoutes } from './app/modules/user/user.route';
 // import { AcademicSemesterRoutes } from './app/modules/academicSemester/academicSemester.route';
 
 const app: Application = express();
 
 app.use(cors());
+app.use(cookieParser());
 //parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

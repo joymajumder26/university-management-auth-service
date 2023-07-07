@@ -9,6 +9,7 @@ import { IUser } from './user.interface';
 
 const createStudent: RequestHandler = catctAsync(
   async (req: Request, res: Response) => {
+    console.log(req.cookies, 'cookie');
     const { student, ...userData } = req.body;
     const result = await UserService.createStudent(student, userData);
 
@@ -22,6 +23,7 @@ const createStudent: RequestHandler = catctAsync(
 );
 const createFaculty: RequestHandler = catctAsync(
   async (req: Request, res: Response) => {
+    console.log(req.cookies, 'cookie');
     const { faculty, ...userData } = req.body;
     const result = await UserService.createFaculty(faculty, userData);
 
