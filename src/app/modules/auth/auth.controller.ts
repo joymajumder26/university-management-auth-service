@@ -1,33 +1,34 @@
 import { Request, Response } from 'express';
-import catctAsync from '../../../shared/catchAsync';
+
 import sendResponse from '../../../shared/sendResponse';
-import httpStatus from 'http-status';
+
 import { AuthService } from './auth.service';
 import { ILoginUserResponse, IRefreshTokenResponse } from './auth.interface';
 import config from '../../../config';
+import catchAsync from '../../../shared/catchAsync';
 
-const loginUser = catctAsync(async (req: Request, res: Response) => {
+const loginUser = catchAsync(async (req: Request, res: Response) => {
   const { ...loginData } = req.body;
   const result = await AuthService.loginUser(loginData);
-
   const { refreshToken, ...others } = result;
 
-  //set refresh token into cookie
+  // set refresh token into cookie
   const cookieOptions = {
     secure: config.env === 'production',
     httpOnly: true,
   };
+
   res.cookie('refreshToken', refreshToken, cookieOptions);
 
   sendResponse<ILoginUserResponse>(res, {
-    statusCode: httpStatus.OK,
+    statusCode: 200,
     success: true,
-    message: 'User login successfully',
+    message: 'User logged in successfully !',
     data: others,
   });
 });
 
-const refreshToken = catctAsync(async (req: Request, res: Response) => {
+const refreshToken = catchAsync(async (req: Request, res: Response) => {
   const { refreshToken } = req.cookies;
 
   const result = await AuthService.refreshToken(refreshToken);
@@ -47,7 +48,21 @@ const refreshToken = catctAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const changePassword = catchAsync(async (req: Request, res: Response) => {
+  const user = req.user;
+  console.log(req.user);
+  const { ...passwordData } = req.body;
+  await AuthService.changePassword(user, passwordData);
+
+  sendResponse<ILoginUserResponse>(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Password changed successfully !',
+  });
+});
+
 export const AuthController = {
   loginUser,
   refreshToken,
+  changePassword,
 };

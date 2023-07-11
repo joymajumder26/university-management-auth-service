@@ -4,21 +4,36 @@ import { IUser, UserModel } from './user.interface';
 import bcrypt from 'bcrypt';
 import config from '../../../config';
 
-const userSchema = new Schema<IUser, UserModel>(
+const UserSchema = new Schema<IUser, UserModel>(
   {
-    id: { type: String, required: true, unique: true },
+    id: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    role: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      select: 0,
+    },
+    needsPasswordChange: {
+      type: Boolean,
+      default: true,
+    },
+    passwordChangedAt: {
+      type: Date,
+    },
 
-    role: { type: String, required: true },
-    password: { type: String, required: true, select: 0 },
-    needsPasswordChange: { type: Boolean, dafault: true },
     student: {
       type: Schema.Types.ObjectId,
-      /// <reference path="" />
       ref: 'Student',
     },
     faculty: {
       type: Schema.Types.ObjectId,
-      /// <reference path="" />
       ref: 'Faculty',
     },
     admin: {
@@ -28,15 +43,13 @@ const userSchema = new Schema<IUser, UserModel>(
   },
   {
     timestamps: true,
-
     toJSON: {
-      // id ta normally dekhanor jonno
       virtuals: true,
     },
   }
 );
 
-userSchema.statics.isUserExist = async function (
+UserSchema.statics.isUserExist = async function (
   id: string
 ): Promise<IUser | null> {
   return await User.findOne(
@@ -45,20 +58,27 @@ userSchema.statics.isUserExist = async function (
   );
 };
 
-userSchema.statics.isPasswordMatched = async function (
+UserSchema.statics.isPasswordMatched = async function (
   givenPassword: string,
   savedPassword: string
 ): Promise<boolean> {
   return await bcrypt.compare(givenPassword, savedPassword);
 };
 
-userSchema.pre('save', async function (next) {
+// User.create() / user.save()
+UserSchema.pre('save', async function (next) {
+  // hashing user password
   const user = this;
   user.password = await bcrypt.hash(
     user.password,
     Number(config.bcrypt_salt_rounds)
   );
+
+  if (!user.needsPasswordChange) {
+    user.passwordChangedAt = new Date();
+  }
+
   next();
 });
 
-export const User = model<IUser, UserModel>('User', userSchema);
+export const User = model<IUser, UserModel>('User', UserSchema);
